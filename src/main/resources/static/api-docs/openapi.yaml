@@ -1,0 +1,38 @@
+openapi: 3.0.3
+info:
+  title: Massive CSV API
+  description: API to manage and process large volumes of data from CSV files.
+  version: 1.0.0
+servers:
+  - url: http://localhost:${SERVER_PORT}
+    description: Local server for the API
+paths:
+  /api/massive/bulk-csv:
+    post:
+      summary: Upload CSV file for batch processing
+      description: This operation allows uploading a CSV file and its associated metadata for batch processing.
+      tags:
+        - CSV Processing
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                meta-data:
+                  type: object
+                  description: Metadata information of the file.
+                  example:
+                    fileName: test.csv
+                file-data:
+                  type: string
+                  format: binary
+                  description: CSV file to upload.
+      responses:
+        '200':
+          description: File processed successfully.
+        '400':
+          description: Invalid request. Error in the submitted data.
+        '500':
+          description: Server error while processing the file.

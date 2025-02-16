@@ -1,0 +1,27 @@
+server:
+  shutdown: graceful
+  servlet:
+    context-path: /api
+  port: ${SERVER_PORT}
+spring:
+  application:
+    name: massive_csv
+  datasource:
+    hikari:
+      connectionTimeout: 3000
+      idleTimeout: 180000
+      max-lifetime: 84600000
+      pool-name: DB_pool
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: ${BATCH_SIZE}
+          batch_versioned_data: true
+        order_inserts: true
+        order_updates: true
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    url: /api-docs/openapi.yaml

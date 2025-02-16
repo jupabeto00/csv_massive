@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: ${DATABASE_JDBC_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+#    show-sql: on
+logging:
+  level:
+    com.ha.massive_excel: debug
